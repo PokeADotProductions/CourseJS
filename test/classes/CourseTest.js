@@ -11,7 +11,7 @@ describe('Course', function() {
         it('should', function() {
             var time1 = new  CourseJS.Time({day:'Mon', time:800}, {day:'Mon', time:850});
             var time2 = new CourseJS.Time({day:'Wed', time:800}, {day:'Wed', time:850});
-            time3 = new CourseJS.Time({day:'Fri', time:800}, {day:'Fri', time:850});
+            var time3 = new CourseJS.Time({day:'Fri', time:800}, {day:'Fri', time:850});
 
             it('should create an entry with the given alias, timeSet, and info', function() {
                 var times = new CourseJS.TimeSet([time1, time2, time3]);
@@ -29,6 +29,11 @@ describe('Course', function() {
 
     // getInfo test
     describe('#getInfo()', function() {
-        //TODO:Implement Test
+        var times = new CourseJS.TimeSet();
+        var courseInfo = new  CourseJS.CourseInfo({}, {}, {}, '', '', '');
+        var course = new CourseJS.Course('alias', times, courseInfo);
+        it('should return a courseInfo object', function() {
+            assert.deepEqual(courseInfo, course.getCourseInfo());
+        });
     });
 });
